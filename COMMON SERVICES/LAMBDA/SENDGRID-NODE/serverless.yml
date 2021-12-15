@@ -1,0 +1,18 @@
+# serverless.yml
+service: common-service
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: server.send_mail
+    events:
+      - http:
+          path: send-mail
+          method: post
+plugins:
+  - serverless-offline
